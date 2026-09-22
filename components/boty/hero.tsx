@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { MessageCircle } from "lucide-react"
 import { WhatsAppButton } from "./whatsapp-button"
+import { WHATSAPP_MESSAGES } from "@/lib/contact"
 
 export function Hero() {
   return (
@@ -48,7 +49,7 @@ export function Hero() {
                 className="flex justify-center lg:justify-start animate-blur-in opacity-0"
                 style={{ animationDelay: "0.8s", animationFillMode: "forwards" }}
               >
-                <WhatsAppButton message="Bonjour Halyd's Secret, je souhaite prendre rendez-vous." size="lg">
+                <WhatsAppButton message={WHATSAPP_MESSAGES.rdv} size="lg">
                   <MessageCircle className="w-4 h-4" />
                   Prendre RDV sur WhatsApp
                 </WhatsAppButton>

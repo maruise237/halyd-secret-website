@@ -1,7 +1,7 @@
 "use client"
 
 import { MapPin, Phone, MessageCircle } from "lucide-react"
-import { ADDRESS, PHONE_DISPLAY } from "@/lib/contact"
+import { ADDRESS, PHONE_DISPLAY, WHATSAPP_MESSAGES } from "@/lib/contact"
 import { WhatsAppButton } from "./whatsapp-button"
 
 const QUICK_LINKS = [
@@ -61,7 +61,7 @@ export function Footer() {
                 {PHONE_DISPLAY}
               </li>
               <li className="pt-2">
-                <WhatsAppButton message="Bonjour Halyd's Secret, je souhaite prendre rendez-vous." size="sm">
+                <WhatsAppButton message={WHATSAPP_MESSAGES.rdv} size="sm">
                   <MessageCircle className="w-4 h-4" />
                   Écrire sur WhatsApp
                 </WhatsAppButton>

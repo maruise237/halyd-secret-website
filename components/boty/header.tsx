@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Menu, X, MessageCircle } from "lucide-react"
 import { WhatsAppButton } from "./whatsapp-button"
+import { WHATSAPP_MESSAGES } from "@/lib/contact"
 
 const NAV_LINKS = [
   { label: "Services", id: "services" },
@@ -64,7 +65,7 @@ export function Header() {
 
           {/* Right Actions */}
           <div className="hidden lg:flex items-center ml-auto">
-            <WhatsAppButton message="Bonjour Halyd's Secret, je souhaite prendre rendez-vous." size="default">
+            <WhatsAppButton message={WHATSAPP_MESSAGES.rdv} size="default">
               <MessageCircle className="w-4 h-4" />
               Prendre RDV
             </WhatsAppButton>
@@ -72,7 +73,7 @@ export function Header() {
 
           {/* Mobile Actions */}
           <div className="flex lg:hidden items-center ml-auto shrink-0">
-            <WhatsAppButton message="Bonjour Halyd's Secret, je souhaite prendre rendez-vous." size="sm" className="text-xs px-3">
+            <WhatsAppButton message={WHATSAPP_MESSAGES.rdv} size="sm" className="text-xs px-3">
               <MessageCircle className="w-3.5 h-3.5" />
               RDV
             </WhatsAppButton>
