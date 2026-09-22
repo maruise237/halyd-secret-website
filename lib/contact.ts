@@ -1,6 +1,8 @@
 export const WHATSAPP_NUMBER = "237698532002"
 export const PHONE_DISPLAY = "+237 698 532 002"
 export const ADDRESS = "Ancienne pharmacie Kotto, Bonamoussadi, Douala"
+export const GOOGLE_MAPS_EMBED_URL =
+  "https://maps.google.com/maps?q=Halyd+secret+Ancienne+pharmacie+Kotto+Douala&z=16&output=embed"
 
 // Trailing sentence appended after the caller's name + phone in the booking dialog.
 export const WHATSAPP_INTENTS = {

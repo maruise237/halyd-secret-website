@@ -8,6 +8,7 @@ import { GallerySection } from "@/components/boty/gallery-section"
 import { AboutFounderSection } from "@/components/boty/about-founder-section"
 import { Testimonials } from "@/components/boty/testimonials"
 import { CTABanner } from "@/components/boty/cta-banner"
+import { LocationMap } from "@/components/boty/location-map"
 import { Footer } from "@/components/boty/footer"
 
 export default function HomePage() {
@@ -23,6 +24,7 @@ export default function HomePage() {
       <AboutFounderSection />
       <Testimonials />
       <CTABanner />
+      <LocationMap />
       <Footer />
     </main>
   )
