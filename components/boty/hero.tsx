@@ -7,53 +7,64 @@ import { WhatsAppButton } from "./whatsapp-button"
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
-      {/* Background image */}
+      {/* Ambient blurred backdrop — the source photo is low-res, so it's used only
+          as a soft, intentionally blurred atmosphere, never as a sharp focal image. */}
       <Image
-        src="/images/realisations/realisation-coiffure-updo-bouclee-01.jpg"
-        alt="Réalisation coiffure Halyd's Secret"
+        src="/images/realisations/realisation-coiffure-glam-brune-01.jpg"
+        alt=""
         fill
         priority
-        className="object-cover object-top opacity-80"
+        aria-hidden
+        className="object-cover scale-125 blur-2xl opacity-30"
       />
-
-      {/* Dark gradient for legibility */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/20 z-[5]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-black/95 to-[#2a1f0f] z-[1]" />
 
       {/* Content */}
-      <div className="relative z-10 w-full pt-40 pb-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="w-full lg:max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
-            <span
-              className="text-sm uppercase mb-6 block text-gold animate-blur-in opacity-0 tracking-[0.3em]"
-              style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}
-            >
-              Salon de beauté &amp; Académie
-            </span>
-            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl leading-[1.1] mb-6 text-balance text-white">
+      <div className="relative z-10 w-full pt-28 pb-20 sm:pt-32 sm:pb-24">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div className="text-center lg:text-left">
               <span
-                className="block animate-blur-in opacity-0 font-semibold"
-                style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
+                className="text-xs sm:text-sm uppercase mb-5 sm:mb-6 block text-gold animate-blur-in opacity-0 tracking-[0.25em] sm:tracking-[0.3em]"
+                style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}
               >
-                Halyd&apos;s Secret
+                Salon de beauté &amp; Académie
               </span>
-            </h1>
-            <p
-              className="text-lg leading-relaxed mb-10 max-w-md mx-auto lg:mx-0 text-white/85 animate-blur-in opacity-0"
-              style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}
-            >
-              Coiffure, makeup, manucure/pédicure, vente de perruques et produits lace. À Bonamoussadi, Douala.
-            </p>
-            <div
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-blur-in opacity-0"
-              style={{ animationDelay: "0.8s", animationFillMode: "forwards" }}
-            >
-              <WhatsAppButton
-                message="Bonjour Halyd's Secret, je souhaite prendre rendez-vous."
-                className="inline-flex items-center justify-center gap-2 bg-gold text-black px-8 py-4 rounded-full text-sm tracking-wide boty-transition hover:bg-gold-hover"
+              <h1 className="font-serif text-4xl sm:text-5xl lg:text-7xl leading-[1.1] mb-6 text-balance text-white">
+                <span
+                  className="block animate-blur-in opacity-0 font-semibold"
+                  style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
+                >
+                  Halyd&apos;s Secret
+                </span>
+              </h1>
+              <p
+                className="text-base sm:text-lg leading-relaxed mb-8 sm:mb-10 max-w-md mx-auto lg:mx-0 text-white/85 animate-blur-in opacity-0"
+                style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}
               >
-                <MessageCircle className="w-4 h-4" />
-                Prendre RDV sur WhatsApp
-              </WhatsAppButton>
+                Coiffure, makeup, manucure/pédicure, vente de perruques et produits lace. À Bonamoussadi, Douala.
+              </p>
+              <div
+                className="flex justify-center lg:justify-start animate-blur-in opacity-0"
+                style={{ animationDelay: "0.8s", animationFillMode: "forwards" }}
+              >
+                <WhatsAppButton message="Bonjour Halyd's Secret, je souhaite prendre rendez-vous." size="lg">
+                  <MessageCircle className="w-4 h-4" />
+                  Prendre RDV sur WhatsApp
+                </WhatsAppButton>
+              </div>
+            </div>
+
+            {/* Crisp framed photo — kept at a modest, near-native size so it stays sharp */}
+            <div className="hidden lg:flex justify-end">
+              <div className="relative w-full max-w-sm aspect-[4/5] rounded-3xl overflow-hidden boty-shadow ring-1 ring-white/10">
+                <Image
+                  src="/images/realisations/realisation-coiffure-glam-brune-01.jpg"
+                  alt="Réalisation coiffure Halyd's Secret"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>

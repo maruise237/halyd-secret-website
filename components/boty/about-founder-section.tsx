@@ -10,6 +10,7 @@ export function AboutFounderSection() {
               src="/images/fondatrice/fondatrice-presentation-video.mp4"
               controls
               playsInline
+              preload="metadata"
               className="absolute inset-0 w-full h-full object-cover"
             />
           </div>

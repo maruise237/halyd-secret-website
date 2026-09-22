@@ -4,7 +4,8 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    // Vercel's built-in image optimizer handles resizing + AVIF/WebP conversion in production.
+    formats: ['image/avif', 'image/webp'],
   },
 }
 

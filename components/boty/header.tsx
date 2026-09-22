@@ -22,16 +22,16 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="fixed top-0 left-0 z-50 px-4 pt-4">
+    <header className="fixed top-0 inset-x-0 z-50 px-3 sm:px-4 pt-3 sm:pt-4">
       <nav
-        className="w-fit px-6 lg:px-8 backdrop-blur-md rounded-lg py-0 my-0 animate-scale-fade-in bg-[rgba(255,255,255,0.7)] border border-[rgba(255,255,255,0.32)]"
+        className="mx-auto max-w-[calc(100vw-1.5rem)] sm:max-w-fit px-3 sm:px-6 lg:px-8 backdrop-blur-md rounded-lg animate-scale-fade-in bg-[rgba(255,255,255,0.85)] border border-[rgba(255,255,255,0.32)]"
         style={{ boxShadow: "rgba(0, 0, 0, 0.1) 0px 10px 50px" }}
       >
-        <div className="flex items-center gap-8 h-[68px]">
+        <div className="flex items-center gap-2 sm:gap-4 lg:gap-8 h-14 sm:h-[68px]">
           {/* Mobile menu button */}
           <button
             type="button"
-            className="lg:hidden p-2 text-foreground/80 hover:text-foreground boty-transition"
+            className="lg:hidden p-2 -ml-2 text-foreground/80 hover:text-foreground boty-transition shrink-0"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -39,8 +39,10 @@ export function Header() {
           </button>
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <span className="font-serif text-2xl tracking-wide text-foreground">Halyd&apos;s Secret</span>
+          <Link href="/" className="flex items-center gap-2 min-w-0">
+            <span className="font-serif text-base sm:text-xl lg:text-2xl tracking-wide text-foreground truncate">
+              Halyd&apos;s Secret
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -61,23 +63,17 @@ export function Header() {
           </div>
 
           {/* Right Actions */}
-          <div className="hidden lg:flex items-center gap-4">
-            <WhatsAppButton
-              message="Bonjour Halyd's Secret, je souhaite prendre rendez-vous."
-              className="inline-flex items-center gap-2 bg-gold text-black px-5 py-2.5 rounded-full text-sm tracking-wide boty-transition hover:bg-gold-hover"
-            >
+          <div className="hidden lg:flex items-center ml-auto">
+            <WhatsAppButton message="Bonjour Halyd's Secret, je souhaite prendre rendez-vous." size="default">
               <MessageCircle className="w-4 h-4" />
               Prendre RDV
             </WhatsAppButton>
           </div>
 
           {/* Mobile Actions */}
-          <div className="flex lg:hidden items-center gap-4 ml-auto">
-            <WhatsAppButton
-              message="Bonjour Halyd's Secret, je souhaite prendre rendez-vous."
-              className="inline-flex items-center gap-2 bg-gold text-black px-4 py-2 rounded-full text-xs tracking-wide boty-transition hover:bg-gold-hover"
-            >
-              <MessageCircle className="w-4 h-4" />
+          <div className="flex lg:hidden items-center ml-auto shrink-0">
+            <WhatsAppButton message="Bonjour Halyd's Secret, je souhaite prendre rendez-vous." size="sm" className="text-xs px-3">
+              <MessageCircle className="w-3.5 h-3.5" />
               RDV
             </WhatsAppButton>
           </div>

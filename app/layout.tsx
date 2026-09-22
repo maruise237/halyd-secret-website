@@ -21,23 +21,6 @@ export const metadata: Metadata = {
   description: "Salon de beauté et académie à Bonamoussadi (Douala) : coiffure, makeup, manucure/pédicure, vente et location de perruques, produits lace. Prenez RDV sur WhatsApp.",
   generator: 'v0.app',
   keywords: ['coiffure', 'salon de beauté', 'makeup', 'manucure', 'pédicure', 'perruques', 'lace', 'académie', 'Douala', 'Cameroun'],
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
-  },
 }
 
 export const viewport: Viewport = {
