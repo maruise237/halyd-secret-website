@@ -2,8 +2,14 @@ export const WHATSAPP_NUMBER = "237698532002"
 export const PHONE_DISPLAY = "+237 698 532 002"
 export const ADDRESS = "Ancienne pharmacie Kotto, Bonamoussadi, Douala"
 
-export const WHATSAPP_MESSAGES = {
-  rdv: "Bonjour Halyd's Secret, je souhaite prendre rendez-vous.",
+// Trailing sentence appended after the caller's name + phone in the booking dialog.
+export const WHATSAPP_INTENTS = {
+  rdv: "Je souhaite prendre rendez-vous.",
+  academie: "Je souhaite avoir des informations sur les formations de l'académie.",
+}
+
+export function buildBookingMessage(name: string, phone: string, intent: string) {
+  return `Bonjour Halyd's Secret, je m'appelle ${name} (${phone}). ${intent}`
 }
 
 export function whatsappLink(message: string) {

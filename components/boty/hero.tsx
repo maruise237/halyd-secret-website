@@ -2,8 +2,8 @@
 
 import Image from "next/image"
 import { MessageCircle } from "lucide-react"
-import { WhatsAppButton } from "./whatsapp-button"
-import { WHATSAPP_MESSAGES } from "@/lib/contact"
+import { BookingDialog } from "./booking-dialog"
+import { WHATSAPP_INTENTS } from "@/lib/contact"
 
 export function Hero() {
   return (
@@ -49,10 +49,10 @@ export function Hero() {
                 className="flex justify-center lg:justify-start animate-blur-in opacity-0"
                 style={{ animationDelay: "0.8s", animationFillMode: "forwards" }}
               >
-                <WhatsAppButton message={WHATSAPP_MESSAGES.rdv} size="lg">
+                <BookingDialog intent={WHATSAPP_INTENTS.rdv} size="lg">
                   <MessageCircle className="w-4 h-4" />
                   Prendre RDV sur WhatsApp
-                </WhatsAppButton>
+                </BookingDialog>
               </div>
             </div>
 

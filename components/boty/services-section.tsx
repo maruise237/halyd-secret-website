@@ -1,5 +1,5 @@
 import { Scissors, Palette, Sparkles, MessageCircle } from "lucide-react"
-import { WhatsAppButton } from "./whatsapp-button"
+import { BookingDialog } from "./booking-dialog"
 import { Reveal } from "./reveal"
 import { SectionHeading } from "./section-heading"
 
@@ -8,19 +8,19 @@ const SERVICES = [
     icon: Scissors,
     title: "Coiffure Femme",
     description: "Pose de perruques, tissage, coupe, coiffage et pose de lace frontale.",
-    message: "Bonjour Halyd's Secret, je souhaite prendre rendez-vous pour la coiffure.",
+    intent: "Je souhaite prendre rendez-vous pour la coiffure.",
   },
   {
     icon: Palette,
     title: "Makeup",
     description: "Maquillage jour, soirée et mariée, réalisé par notre équipe.",
-    message: "Bonjour Halyd's Secret, je souhaite prendre rendez-vous pour un maquillage.",
+    intent: "Je souhaite prendre rendez-vous pour un maquillage.",
   },
   {
     icon: Sparkles,
     title: "Manucure / Pédicure",
     description: "Pose de vernis, nail art et soins des mains et des pieds.",
-    message: "Bonjour Halyd's Secret, je souhaite prendre rendez-vous pour une manucure/pédicure.",
+    intent: "Je souhaite prendre rendez-vous pour une manucure/pédicure.",
   },
 ]
 
@@ -46,10 +46,10 @@ export function ServicesSection() {
               </div>
               <h3 className="font-serif text-xl sm:text-2xl text-foreground mb-3">{service.title}</h3>
               <p className="text-muted-foreground leading-relaxed mb-6 text-sm sm:text-base">{service.description}</p>
-              <WhatsAppButton message={service.message} variant="gold-outline" size="sm">
+              <BookingDialog intent={service.intent} variant="gold-outline" size="sm">
                 <MessageCircle className="w-4 h-4" />
                 Prendre RDV
-              </WhatsAppButton>
+              </BookingDialog>
             </Reveal>
           ))}
         </div>

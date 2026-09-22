@@ -1,8 +1,7 @@
-"use client"
-
 import { GraduationCap, MessageCircle } from "lucide-react"
 import Image from "next/image"
-import { WhatsAppButton } from "./whatsapp-button"
+import { BookingDialog } from "./booking-dialog"
+import { WHATSAPP_INTENTS } from "@/lib/contact"
 
 const PROGRAMS = ["Coiffure & pose de lace", "Makeup professionnel", "Manucure / Pédicure"]
 
@@ -45,13 +44,10 @@ export function AcademySection() {
               ))}
             </ul>
 
-            <WhatsAppButton
-              message="Bonjour Halyd's Secret, je souhaite avoir des informations sur les formations de l'académie."
-              size="lg"
-            >
+            <BookingDialog intent={WHATSAPP_INTENTS.academie} size="lg">
               <MessageCircle className="w-4 h-4" />
               Demander le programme
-            </WhatsAppButton>
+            </BookingDialog>
           </div>
         </div>
       </div>

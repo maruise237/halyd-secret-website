@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { MessageCircle } from "lucide-react"
 import { PRODUCTS } from "@/lib/products"
-import { WhatsAppButton } from "./whatsapp-button"
+import { BookingDialog } from "./booking-dialog"
 import { Reveal } from "./reveal"
 import { SectionHeading } from "./section-heading"
 
@@ -40,15 +40,15 @@ export function ProductGrid() {
                   <span className="font-medium text-foreground text-sm sm:text-base">
                     {product.price ?? "Prix sur demande"}
                   </span>
-                  <WhatsAppButton
-                    message={`Bonjour Halyd's Secret, je suis intéressé(e) par : ${product.name}.`}
+                  <BookingDialog
+                    intent={`Je suis intéressé(e) par : ${product.name}.`}
                     variant="gold-outline"
                     size="sm"
                     className="w-full text-xs sm:text-sm"
                   >
                     <MessageCircle className="w-3.5 h-3.5" />
                     Commander
-                  </WhatsAppButton>
+                  </BookingDialog>
                 </div>
               </div>
             </Reveal>

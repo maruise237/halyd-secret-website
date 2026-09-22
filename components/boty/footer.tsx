@@ -1,8 +1,6 @@
-"use client"
-
 import { MapPin, Phone, MessageCircle } from "lucide-react"
-import { ADDRESS, PHONE_DISPLAY, WHATSAPP_MESSAGES } from "@/lib/contact"
-import { WhatsAppButton } from "./whatsapp-button"
+import { ADDRESS, PHONE_DISPLAY, WHATSAPP_INTENTS } from "@/lib/contact"
+import { BookingDialog } from "./booking-dialog"
 
 const QUICK_LINKS = [
   { label: "Services", id: "services" },
@@ -61,10 +59,10 @@ export function Footer() {
                 {PHONE_DISPLAY}
               </li>
               <li className="pt-2">
-                <WhatsAppButton message={WHATSAPP_MESSAGES.rdv} size="sm">
+                <BookingDialog intent={WHATSAPP_INTENTS.rdv} size="sm">
                   <MessageCircle className="w-4 h-4" />
                   Écrire sur WhatsApp
-                </WhatsAppButton>
+                </BookingDialog>
               </li>
             </ul>
           </div>
