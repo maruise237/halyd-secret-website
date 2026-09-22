@@ -8,7 +8,6 @@ export type GoogleReview = {
 // Source : fiche Google Business "Halyd secret" (Institut de beauté, Douala).
 export const GOOGLE_RATING = 5.0
 export const GOOGLE_REVIEW_COUNT = 2
-export const GOOGLE_MAPS_URL = "https://www.google.com/maps/search/?api=1&query=Halyd+secret+Ancienne+pharmacie+Kotto+Douala"
 
 export const GOOGLE_REVIEWS: GoogleReview[] = [
   {

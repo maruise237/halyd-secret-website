@@ -1,7 +1,6 @@
 import { MapPin, Navigation } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { ADDRESS, GOOGLE_MAPS_EMBED_URL } from "@/lib/contact"
-import { GOOGLE_MAPS_URL } from "@/lib/reviews"
+import { ADDRESS, GOOGLE_MAPS_EMBED_URL, GOOGLE_MAPS_URL } from "@/lib/contact"
 import { SectionHeading } from "./section-heading"
 
 export function LocationMap() {

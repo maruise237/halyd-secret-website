@@ -3,7 +3,8 @@
 import { Star } from "lucide-react"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { SectionHeading } from "./section-heading"
-import { GOOGLE_RATING, GOOGLE_REVIEW_COUNT, GOOGLE_MAPS_URL, GOOGLE_REVIEWS } from "@/lib/reviews"
+import { GOOGLE_RATING, GOOGLE_REVIEW_COUNT, GOOGLE_REVIEWS } from "@/lib/reviews"
+import { GOOGLE_MAPS_URL } from "@/lib/contact"
 
 function Stars({ count }: { count: number }) {
   return (
