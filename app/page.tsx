@@ -6,6 +6,7 @@ import { ProductGrid } from "@/components/boty/product-grid"
 import { AcademySection } from "@/components/boty/academy-section"
 import { GallerySection } from "@/components/boty/gallery-section"
 import { AboutFounderSection } from "@/components/boty/about-founder-section"
+import { Testimonials } from "@/components/boty/testimonials"
 import { CTABanner } from "@/components/boty/cta-banner"
 import { Footer } from "@/components/boty/footer"
 
@@ -20,6 +21,7 @@ export default function HomePage() {
       <AcademySection />
       <GallerySection />
       <AboutFounderSection />
+      <Testimonials />
       <CTABanner />
       <Footer />
     </main>

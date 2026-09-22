@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Menu, X, MessageCircle } from "lucide-react"
+import { Menu, X, Calendar } from "lucide-react"
 import { BookingDialog } from "./booking-dialog"
 import { SALON_SERVICES } from "@/lib/salon-services"
 
@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { label: "Académie", id: "academie" },
   { label: "Réalisations", id: "realisations" },
   { label: "À propos", id: "apropos" },
+  { label: "Avis", id: "avis" },
   { label: "Contact", id: "contact" },
 ]
 
@@ -66,7 +67,7 @@ export function Header() {
           {/* Right Actions */}
           <div className="hidden lg:flex items-center ml-auto">
             <BookingDialog services={SALON_SERVICES} size="default">
-              <MessageCircle className="w-4 h-4" />
+              <Calendar className="w-4 h-4" />
               Prendre RDV
             </BookingDialog>
           </div>
@@ -74,7 +75,7 @@ export function Header() {
           {/* Mobile Actions */}
           <div className="flex lg:hidden items-center ml-auto shrink-0">
             <BookingDialog services={SALON_SERVICES} size="sm" className="text-xs px-3">
-              <MessageCircle className="w-3.5 h-3.5" />
+              <Calendar className="w-3.5 h-3.5" />
               RDV
             </BookingDialog>
           </div>

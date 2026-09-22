@@ -1,6 +1,6 @@
 "use client"
 
-import { MapPin, Phone, MessageCircle } from "lucide-react"
+import { MapPin, Phone, Calendar } from "lucide-react"
 import { ADDRESS, PHONE_DISPLAY } from "@/lib/contact"
 import { BookingDialog } from "./booking-dialog"
 import { SALON_SERVICES } from "@/lib/salon-services"
@@ -11,6 +11,7 @@ const QUICK_LINKS = [
   { label: "Académie", id: "academie" },
   { label: "Réalisations", id: "realisations" },
   { label: "À propos", id: "apropos" },
+  { label: "Avis", id: "avis" },
 ]
 
 export function Footer() {
@@ -63,8 +64,8 @@ export function Footer() {
               </li>
               <li className="pt-2">
                 <BookingDialog services={SALON_SERVICES} size="sm">
-                  <MessageCircle className="w-4 h-4" />
-                  Écrire sur WhatsApp
+                  <Calendar className="w-4 h-4" />
+                  Réserver sur WhatsApp
                 </BookingDialog>
               </li>
             </ul>

@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { MessageCircle } from "lucide-react"
+import { Calendar } from "lucide-react"
 import { BookingDialog } from "./booking-dialog"
 import { SALON_SERVICES } from "@/lib/salon-services"
 
@@ -23,8 +23,21 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-10 w-full pt-28 pb-20 sm:pt-32 sm:pb-24">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <div className="text-center lg:text-left">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center">
+            {/* Crisp framed photo — kept at a modest, near-native size so it stays sharp.
+                Shown first on mobile for visual impact, right column on desktop. */}
+            <div className="order-first lg:order-last flex justify-center lg:justify-end">
+              <div className="relative w-40 sm:w-56 lg:w-full lg:max-w-sm aspect-[4/5] rounded-3xl overflow-hidden boty-shadow ring-1 ring-white/10">
+                <Image
+                  src="/images/realisations/realisation-coiffure-glam-brune-01.jpg"
+                  alt="Réalisation coiffure Halyd's Secret"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            <div className="order-last lg:order-first text-center lg:text-left">
               <span
                 className="text-xs sm:text-sm uppercase mb-5 sm:mb-6 block text-gold animate-blur-in opacity-0 tracking-[0.25em] sm:tracking-[0.3em]"
                 style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}
@@ -50,21 +63,9 @@ export function Hero() {
                 style={{ animationDelay: "0.8s", animationFillMode: "forwards" }}
               >
                 <BookingDialog services={SALON_SERVICES} size="lg">
-                  <MessageCircle className="w-4 h-4" />
+                  <Calendar className="w-4 h-4" />
                   Prendre RDV sur WhatsApp
                 </BookingDialog>
-              </div>
-            </div>
-
-            {/* Crisp framed photo — kept at a modest, near-native size so it stays sharp */}
-            <div className="hidden lg:flex justify-end">
-              <div className="relative w-full max-w-sm aspect-[4/5] rounded-3xl overflow-hidden boty-shadow ring-1 ring-white/10">
-                <Image
-                  src="/images/realisations/realisation-coiffure-glam-brune-01.jpg"
-                  alt="Réalisation coiffure Halyd's Secret"
-                  fill
-                  className="object-cover"
-                />
               </div>
             </div>
           </div>

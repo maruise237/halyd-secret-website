@@ -1,6 +1,6 @@
 "use client"
 
-import { MapPin, Phone, MessageCircle } from "lucide-react"
+import { MapPin, Phone, Calendar } from "lucide-react"
 import { ADDRESS, PHONE_DISPLAY } from "@/lib/contact"
 import { BookingDialog } from "./booking-dialog"
 import { Reveal } from "./reveal"
@@ -31,8 +31,8 @@ export function CTABanner() {
             </div>
 
             <BookingDialog services={SALON_SERVICES} size="lg">
-              <MessageCircle className="w-4 h-4" />
-              Écrire sur WhatsApp
+              <Calendar className="w-4 h-4" />
+              Réserver sur WhatsApp
             </BookingDialog>
           </div>
         </Reveal>

@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react"
+import { Calendar } from "lucide-react"
 import { BookingDialog } from "./booking-dialog"
 import { Reveal } from "./reveal"
 import { SectionHeading } from "./section-heading"
@@ -27,7 +27,7 @@ export function ServicesSection() {
               <h3 className="font-serif text-xl sm:text-2xl text-foreground mb-3">{service.title}</h3>
               <p className="text-muted-foreground leading-relaxed mb-6 text-sm sm:text-base">{service.description}</p>
               <BookingDialog intent={service.intent} variant="gold-outline" size="sm">
-                <MessageCircle className="w-4 h-4" />
+                <Calendar className="w-4 h-4" />
                 Prendre RDV
               </BookingDialog>
             </Reveal>
