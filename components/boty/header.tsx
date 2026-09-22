@@ -4,7 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Menu, X, MessageCircle } from "lucide-react"
 import { BookingDialog } from "./booking-dialog"
-import { WHATSAPP_INTENTS } from "@/lib/contact"
+import { SALON_SERVICES } from "@/lib/salon-services"
 
 const NAV_LINKS = [
   { label: "Services", id: "services" },
@@ -65,7 +65,7 @@ export function Header() {
 
           {/* Right Actions */}
           <div className="hidden lg:flex items-center ml-auto">
-            <BookingDialog intent={WHATSAPP_INTENTS.rdv} size="default">
+            <BookingDialog services={SALON_SERVICES} size="default">
               <MessageCircle className="w-4 h-4" />
               Prendre RDV
             </BookingDialog>
@@ -73,7 +73,7 @@ export function Header() {
 
           {/* Mobile Actions */}
           <div className="flex lg:hidden items-center ml-auto shrink-0">
-            <BookingDialog intent={WHATSAPP_INTENTS.rdv} size="sm" className="text-xs px-3">
+            <BookingDialog services={SALON_SERVICES} size="sm" className="text-xs px-3">
               <MessageCircle className="w-3.5 h-3.5" />
               RDV
             </BookingDialog>

@@ -8,8 +8,9 @@ export const WHATSAPP_INTENTS = {
   academie: "Je souhaite avoir des informations sur les formations de l'académie.",
 }
 
-export function buildBookingMessage(name: string, phone: string, intent: string) {
-  return `Bonjour Halyd's Secret, je m'appelle ${name} (${phone}). ${intent}`
+export function buildBookingMessage(name: string, phone: string, intent: string, slot?: string) {
+  const slotSentence = slot ? ` Créneau souhaité : ${slot}.` : ""
+  return `Bonjour Halyd's Secret, je m'appelle ${name} (${phone}). ${intent}${slotSentence}`
 }
 
 export function whatsappLink(message: string) {

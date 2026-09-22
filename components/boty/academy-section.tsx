@@ -44,7 +44,7 @@ export function AcademySection() {
               ))}
             </ul>
 
-            <BookingDialog intent={WHATSAPP_INTENTS.academie} size="lg">
+            <BookingDialog intent={WHATSAPP_INTENTS.academie} withSlot={false} size="lg">
               <MessageCircle className="w-4 h-4" />
               Demander le programme
             </BookingDialog>

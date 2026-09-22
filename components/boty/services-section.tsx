@@ -1,28 +1,8 @@
-import { Scissors, Palette, Sparkles, MessageCircle } from "lucide-react"
+import { MessageCircle } from "lucide-react"
 import { BookingDialog } from "./booking-dialog"
 import { Reveal } from "./reveal"
 import { SectionHeading } from "./section-heading"
-
-const SERVICES = [
-  {
-    icon: Scissors,
-    title: "Coiffure Femme",
-    description: "Pose de perruques, tissage, coupe, coiffage et pose de lace frontale.",
-    intent: "Je souhaite prendre rendez-vous pour la coiffure.",
-  },
-  {
-    icon: Palette,
-    title: "Makeup",
-    description: "Maquillage jour, soirée et mariée, réalisé par notre équipe.",
-    intent: "Je souhaite prendre rendez-vous pour un maquillage.",
-  },
-  {
-    icon: Sparkles,
-    title: "Manucure / Pédicure",
-    description: "Pose de vernis, nail art et soins des mains et des pieds.",
-    intent: "Je souhaite prendre rendez-vous pour une manucure/pédicure.",
-  },
-]
+import { SALON_SERVICES } from "@/lib/salon-services"
 
 export function ServicesSection() {
   return (
@@ -35,9 +15,9 @@ export function ServicesSection() {
         />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {SERVICES.map((service, index) => (
+          {SALON_SERVICES.map((service, index) => (
             <Reveal
-              key={service.title}
+              key={service.id}
               delayMs={index * 150}
               className="bg-card border border-border rounded-3xl p-6 sm:p-8 boty-transition hover:scale-[1.02] boty-shadow"
             >

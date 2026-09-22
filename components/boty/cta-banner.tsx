@@ -1,7 +1,10 @@
+"use client"
+
 import { MapPin, Phone, MessageCircle } from "lucide-react"
-import { ADDRESS, PHONE_DISPLAY, WHATSAPP_INTENTS } from "@/lib/contact"
+import { ADDRESS, PHONE_DISPLAY } from "@/lib/contact"
 import { BookingDialog } from "./booking-dialog"
 import { Reveal } from "./reveal"
+import { SALON_SERVICES } from "@/lib/salon-services"
 
 export function CTABanner() {
   return (
@@ -27,7 +30,7 @@ export function CTABanner() {
               </div>
             </div>
 
-            <BookingDialog intent={WHATSAPP_INTENTS.rdv} size="lg">
+            <BookingDialog services={SALON_SERVICES} size="lg">
               <MessageCircle className="w-4 h-4" />
               Écrire sur WhatsApp
             </BookingDialog>

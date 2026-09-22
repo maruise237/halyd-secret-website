@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { MessageCircle } from "lucide-react"
 import { BookingDialog } from "./booking-dialog"
-import { WHATSAPP_INTENTS } from "@/lib/contact"
+import { SALON_SERVICES } from "@/lib/salon-services"
 
 export function Hero() {
   return (
@@ -49,7 +49,7 @@ export function Hero() {
                 className="flex justify-center lg:justify-start animate-blur-in opacity-0"
                 style={{ animationDelay: "0.8s", animationFillMode: "forwards" }}
               >
-                <BookingDialog intent={WHATSAPP_INTENTS.rdv} size="lg">
+                <BookingDialog services={SALON_SERVICES} size="lg">
                   <MessageCircle className="w-4 h-4" />
                   Prendre RDV sur WhatsApp
                 </BookingDialog>
