@@ -28,16 +28,18 @@ export function TrustBadges() {
   return (
     <section className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           {badges.map((badge, index) => (
             <Reveal
               key={badge.title}
               delayMs={index * 150}
-              className="bg-card p-6 lg:p-8 text-center rounded-xl border border-border"
+              className="flex flex-col items-center justify-center text-center bg-card p-5 sm:p-6 lg:p-8 rounded-xl border border-border h-full"
             >
-              <badge.icon className="text-gold mb-4 mx-auto size-12" strokeWidth={1} />
-              <h3 className="font-serif text-foreground mb-2 text-2xl">{badge.title}</h3>
-              <p className="text-sm text-muted-foreground">{badge.description}</p>
+              <badge.icon className="text-gold mb-3 sm:mb-4 size-8 sm:size-12" strokeWidth={1} />
+              <h3 className="font-serif text-foreground mb-1.5 sm:mb-2 text-base sm:text-2xl leading-snug text-balance">
+                {badge.title}
+              </h3>
+              <p className="text-xs sm:text-sm text-muted-foreground text-balance">{badge.description}</p>
             </Reveal>
           ))}
         </div>
