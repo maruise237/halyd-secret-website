@@ -22,11 +22,23 @@ export function GridMotion({
   const combinedItems = items.length > 0 ? items.slice(0, totalItems) : defaultItems
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
     mouseXRef.current = window.innerWidth / 2
     gsap.ticker.lagSmoothing(0)
 
+    // Touch devices have no hover/mouse signal, so the grid would sit
+    // frozen on mobile. Drive the same motion from scroll depth instead —
+    // scrolling is the interaction mobile visitors actually do.
+    const isTouchDevice = window.matchMedia("(hover: none), (pointer: coarse)").matches
+
     const handleMouseMove = (e: MouseEvent) => {
       mouseXRef.current = e.clientX
+    }
+
+    const handleScroll = () => {
+      const t = window.scrollY / 120
+      mouseXRef.current = window.innerWidth / 2 + Math.sin(t) * (window.innerWidth / 2)
     }
 
     const updateMotion = () => {
@@ -50,10 +62,17 @@ export function GridMotion({
     }
 
     const removeAnimationLoop = gsap.ticker.add(updateMotion)
-    window.addEventListener("mousemove", handleMouseMove)
+
+    if (isTouchDevice) {
+      handleScroll()
+      window.addEventListener("scroll", handleScroll, { passive: true })
+    } else {
+      window.addEventListener("mousemove", handleMouseMove)
+    }
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove)
+      window.removeEventListener("scroll", handleScroll)
       removeAnimationLoop()
     }
   }, [])
