@@ -9,16 +9,19 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
       {/* Ambient blurred backdrop — the source photo is low-res, so it's used only
-          as a soft, intentionally blurred atmosphere, never as a sharp focal image. */}
+          as a soft, intentionally blurred atmosphere, never as a sharp focal image.
+          The dark gradient stays darkest behind the title (bottom on mobile where
+          text sits below the photo, left on desktop where text sits beside it) so
+          the heading keeps strong contrast while the photo still reads clearly. */}
       <Image
         src="/images/realisations/realisation-coiffure-glam-brune-01.jpg"
         alt=""
         fill
         priority
         aria-hidden
-        className="object-cover scale-125 blur-2xl opacity-30"
+        className="object-cover scale-125 blur-2xl opacity-55"
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-black/95 to-[#2a1f0f] z-[1]" />
+      <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-black via-black/75 to-black/40 z-[1]" />
 
       {/* Content */}
       <div className="relative z-10 w-full pt-28 pb-20 sm:pt-32 sm:pb-24">
