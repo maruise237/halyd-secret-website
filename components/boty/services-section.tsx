@@ -17,14 +17,14 @@ const SERVICE_IMAGES: Record<string, string> = {
 
 const SLIDE_COUNT = SALON_SERVICES.length
 
-function ServiceSlide({ service, index }: { service: SalonService; index: number }) {
+function ServiceCard({ service, index }: { service: SalonService; index: number }) {
   return (
-    <div className="relative aspect-[4/5] sm:aspect-[16/9] rounded-3xl overflow-hidden boty-shadow">
+    <div className="relative aspect-[3/4] rounded-3xl overflow-hidden boty-shadow">
       <Image
         src={SERVICE_IMAGES[service.id]}
         alt={service.title}
         fill
-        sizes="(max-width: 1024px) 100vw, 900px"
+        sizes="(max-width: 1024px) 100vw, 33vw"
         priority={index === 0}
         className="object-cover"
       />
@@ -34,12 +34,12 @@ function ServiceSlide({ service, index }: { service: SalonService; index: number
         {String(index + 1).padStart(2, "0")}
       </span>
 
-      <div className="absolute inset-x-0 bottom-0 p-5 sm:p-8 md:p-10">
+      <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 md:p-8">
         <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/15 backdrop-blur-sm mb-3 sm:mb-4">
           <service.icon className="w-5 h-5 sm:w-6 sm:h-6 text-gold" strokeWidth={1.5} />
         </div>
-        <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl text-white mb-2 text-balance">{service.title}</h3>
-        <p className="text-sm sm:text-base text-white/80 max-w-md mb-5 sm:mb-6">{service.description}</p>
+        <h3 className="font-serif text-2xl sm:text-3xl text-white mb-2 text-balance">{service.title}</h3>
+        <p className="text-sm sm:text-base text-white/80 mb-5 sm:mb-6">{service.description}</p>
         <BookingDialog intent={service.intent} variant="gold" size="default">
           <Calendar className="w-4 h-4" />
           Prendre RDV
@@ -61,8 +61,10 @@ export function ServicesSection() {
     api.on("select", () => setSelected(api.selectedScrollSnap()))
   }, [api])
 
-  // Vertical scroll through the pinned section advances the slides horizontally,
-  // so it reads as "scrolling sideways" rather than requiring a manual swipe/click.
+  // Mobile only: vertical scroll through the pinned strip advances the slides
+  // horizontally, so it reads as "scrolling sideways" rather than a manual
+  // swipe/click. On desktop this element is display:none (lg:hidden), so its
+  // rect collapses to zero height and the handler naturally no-ops below.
   useEffect(() => {
     if (!api) return
 
@@ -86,10 +88,27 @@ export function ServicesSection() {
   }, [api])
 
   return (
-    <section id="services" className="relative bg-background scroll-mt-20" style={{ height: `${SLIDE_COUNT * 100}vh` }}>
-      <div ref={pinRef} className="absolute inset-0">
-        <div className="sticky top-0 h-screen flex flex-col justify-center py-10 sm:py-16">
-          <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8 w-full">
+    <section id="services" className="relative bg-background scroll-mt-20">
+      {/* Desktop / tablet: the three services side by side, no scroll-jacking. */}
+      <div className="hidden lg:block py-16 sm:py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="Nos prestations"
+            title="Services du salon"
+            description="Un salon complet pour prendre soin de vous, sur rendez-vous."
+          />
+          <div className="grid grid-cols-3 gap-6">
+            {SALON_SERVICES.map((service, index) => (
+              <ServiceCard key={service.id} service={service} index={index} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile: one card at a time, advanced by scrolling through the pinned strip. */}
+      <div ref={pinRef} className="lg:hidden relative" style={{ height: `${SLIDE_COUNT * 100}vh` }}>
+        <div className="sticky top-0 h-screen flex flex-col justify-center py-10">
+          <div className="max-w-md mx-auto px-5 w-full">
             <SectionHeading
               eyebrow="Nos prestations"
               title="Services du salon"
@@ -100,7 +119,7 @@ export function ServicesSection() {
               <CarouselContent>
                 {SALON_SERVICES.map((service, index) => (
                   <CarouselItem key={service.id}>
-                    <ServiceSlide service={service} index={index} />
+                    <ServiceCard service={service} index={index} />
                   </CarouselItem>
                 ))}
               </CarouselContent>
