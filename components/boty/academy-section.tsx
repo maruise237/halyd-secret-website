@@ -49,7 +49,12 @@ export function AcademySection() {
             </ul>
 
             <div>
-              <BookingDialog intent={WHATSAPP_INTENTS.academie} withSlot={false} size="lg">
+              <BookingDialog
+                intent={WHATSAPP_INTENTS.academie}
+                title="Rejoindre l'académie"
+                description="Laissez vos coordonnées, on vous envoie le programme sur WhatsApp."
+                size="lg"
+              >
                 <MessageCircle className="w-4 h-4" />
                 Demander le programme
               </BookingDialog>
