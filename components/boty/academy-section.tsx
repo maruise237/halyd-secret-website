@@ -53,6 +53,7 @@ export function AcademySection() {
                 intent={WHATSAPP_INTENTS.academie}
                 title="Rejoindre l'académie"
                 description="Laissez vos coordonnées, on vous envoie le programme sur WhatsApp."
+                withSlot={false}
                 size="lg"
               >
                 <MessageCircle className="w-4 h-4" />
