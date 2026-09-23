@@ -51,8 +51,10 @@ export function Hero() {
       </div>
 
       {/* Dark gradient — darkest behind the title (bottom on mobile, left on
-          desktop) so the heading stays legible over the moving grid. */}
-      <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-black via-black/80 to-black/40 z-[5] pointer-events-none" />
+          desktop) so the heading stays legible over the moving grid, lightened
+          overall so the real salon photos read through instead of a near-solid
+          black panel. */}
+      <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-black/80 via-black/55 to-black/15 z-[5] pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 w-full pt-28 pb-20 sm:pt-32 sm:pb-24 pointer-events-none">

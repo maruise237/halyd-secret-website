@@ -35,7 +35,11 @@ export function TrustBadges() {
               key={badge.title}
               delayMs={index * 100}
               className={cn(
-                "flex flex-col items-start py-6 px-4 sm:px-6 lg:py-10 lg:px-8 border-border",
+                // translate-y-0 pins the reveal to a fade-only animation: this row sits
+                // flush against the services section below it (no gap), so the default
+                // slide-up-into-place transform would briefly poke into that section's
+                // heading while animating, especially on a fast/momentum scroll.
+                "flex flex-col items-start py-6 px-4 sm:px-6 lg:py-10 lg:px-8 border-border translate-y-0",
                 index % 2 === 1 && "border-l",
                 index >= 2 && "border-t lg:border-t-0",
                 index === 2 && "lg:border-l"
