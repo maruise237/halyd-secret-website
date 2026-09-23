@@ -4,6 +4,7 @@ import { MapPin, Phone, Calendar } from "lucide-react"
 import { ADDRESS, PHONE_DISPLAY } from "@/lib/contact"
 import { BookingDialog } from "./booking-dialog"
 import { SALON_SERVICES } from "@/lib/salon-services"
+import { SOCIAL_LINKS } from "@/lib/social-links"
 
 const QUICK_LINKS = [
   { label: "Services", id: "services" },
@@ -31,6 +32,21 @@ export function Footer() {
             <p className="text-sm text-muted-foreground leading-relaxed mb-6">
               Salon de beauté &amp; académie — coiffure, makeup, manucure/pédicure, perruques et produits lace.
             </p>
+            <p className="text-sm text-muted-foreground mb-3">Suivez-nous pour ne rien manquer de nos réalisations.</p>
+            <div className="flex items-center gap-3">
+              {SOCIAL_LINKS.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.name}
+                  className="flex items-center justify-center size-10 rounded-full border border-border text-foreground/70 hover:border-gold hover:text-gold boty-transition"
+                >
+                  <social.icon className="size-4" />
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Quick Links */}
