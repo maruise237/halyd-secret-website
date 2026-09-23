@@ -29,14 +29,16 @@ export function TrustBadges() {
   return (
     <section className="bg-background border-t border-border">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 sm:gap-x-8 sm:gap-y-10 lg:gap-x-0 lg:gap-y-0 divide-y divide-border sm:divide-y-0">
+        <div className="grid grid-cols-2 lg:grid-cols-4">
           {badges.map((badge, index) => (
             <Reveal
               key={badge.title}
               delayMs={index * 100}
               className={cn(
-                "flex flex-col items-start py-8 sm:py-0 lg:py-10 lg:px-8",
-                index > 0 && "lg:border-l lg:border-border"
+                "flex flex-col items-start py-6 px-4 sm:px-6 lg:py-10 lg:px-8 border-border",
+                index % 2 === 1 && "border-l",
+                index >= 2 && "border-t lg:border-t-0",
+                index === 2 && "lg:border-l"
               )}
             >
               <span className="flex items-center justify-center size-9 rounded-full bg-foreground text-background mb-4 sm:mb-5 shrink-0">
