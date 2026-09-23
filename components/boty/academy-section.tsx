@@ -9,20 +9,24 @@ export function AcademySection() {
   return (
     <section id="academie" className="py-16 sm:py-24 bg-background scroll-mt-20">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
-          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-secondary to-card p-8 sm:p-12 flex items-center justify-center min-h-[280px] sm:min-h-[360px]">
-            <div className="relative w-40 h-40 sm:w-52 sm:h-52 rounded-2xl overflow-hidden boty-shadow ring-1 ring-border rotate-[-3deg]">
-              <Image
-                src="/images/realisations/realisation-pose-perruque-frontale-01.jpg"
-                alt="Formation pose de lace à l'académie Halyd's Secret"
-                fill
-                className="object-cover"
-              />
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-stretch">
+          <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto rounded-3xl overflow-hidden boty-shadow">
+            <Image
+              src="/images/fondatrice/academie-formation-pose-lace.jpg"
+              alt="Formation pose de lace à l'académie Halyd's Secret"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent" />
+            <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 inline-flex items-center gap-2 bg-black/60 backdrop-blur-sm text-white text-xs sm:text-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-full">
+              <GraduationCap className="w-4 h-4 text-gold flex-shrink-0" />
+              Formation en direct au salon
             </div>
-            <GraduationCap className="absolute top-6 right-6 sm:top-8 sm:right-8 w-10 h-10 sm:w-12 sm:h-12 text-gold" strokeWidth={1} />
           </div>
 
-          <div>
+          <div className="flex flex-col justify-center">
             <span className="text-xs sm:text-sm tracking-[0.25em] sm:tracking-[0.3em] uppercase text-gold mb-4 flex items-center gap-2">
               <GraduationCap className="w-4 h-4" />
               Académie
@@ -44,10 +48,12 @@ export function AcademySection() {
               ))}
             </ul>
 
-            <BookingDialog intent={WHATSAPP_INTENTS.academie} withSlot={false} size="lg">
-              <MessageCircle className="w-4 h-4" />
-              Demander le programme
-            </BookingDialog>
+            <div>
+              <BookingDialog intent={WHATSAPP_INTENTS.academie} withSlot={false} size="lg">
+                <MessageCircle className="w-4 h-4" />
+                Demander le programme
+              </BookingDialog>
+            </div>
           </div>
         </div>
       </div>
