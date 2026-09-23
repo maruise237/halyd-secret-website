@@ -78,10 +78,16 @@ export function Testimonials() {
 
         const cardCenter = x + CARD_WIDTH / 2
         const dipDepth = 90
-        const normalizedX = (cardCenter - dimensions.cx) / dimensions.cx
+        // Clamped so a card whose center has drifted past the viewport edge
+        // (still partly visible, since it's wider than the leftover margin)
+        // settles flat at the rope's end instead of the quadratic blowing up
+        // into an extreme rotation that swings it into the neighboring card.
+        // That blow-up was most visible on tablet widths, where the fixed
+        // 420px card width is a large fraction of the viewport.
+        const normalizedX = Math.max(-1, Math.min(1, (cardCenter - dimensions.cx) / dimensions.cx))
         const y = dipDepth * (1 - Math.pow(normalizedX, 2))
 
-        const slope = ((-2 * dipDepth) / Math.pow(dimensions.cx, 2)) * (cardCenter - dimensions.cx)
+        const slope = ((-2 * dipDepth) / dimensions.cx) * normalizedX
         const physicsAngle = Math.atan(slope) * (180 / Math.PI)
         const finalAngle = physicsAngle + CARD_SPACING[idx % CARD_SPACING.length]
 
