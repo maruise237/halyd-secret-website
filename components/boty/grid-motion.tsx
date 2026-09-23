@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, type ReactNode } from "react"
+import Image from "next/image"
 import { gsap } from "gsap"
 import styles from "./grid-motion.module.css"
 
@@ -23,6 +24,8 @@ export function GridMotion({
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+    const container = gridRef.current
+    if (!container) return
 
     mouseXRef.current = window.innerWidth / 2
     gsap.ticker.lagSmoothing(0)
@@ -61,19 +64,37 @@ export function GridMotion({
       })
     }
 
-    const removeAnimationLoop = gsap.ticker.add(updateMotion)
-
-    if (isTouchDevice) {
-      handleScroll()
-      window.addEventListener("scroll", handleScroll, { passive: true })
-    } else {
-      window.addEventListener("mousemove", handleMouseMove)
+    // This otherwise runs for the whole time the page is open, even long
+    // after the user has scrolled the Hero out of view — pause the ticker
+    // and the listeners driving it outside the viewport, resume on return.
+    let active = false
+    const start = () => {
+      if (active) return
+      active = true
+      gsap.ticker.add(updateMotion)
+      if (isTouchDevice) {
+        handleScroll()
+        window.addEventListener("scroll", handleScroll, { passive: true })
+      } else {
+        window.addEventListener("mousemove", handleMouseMove)
+      }
     }
-
-    return () => {
+    const stop = () => {
+      if (!active) return
+      active = false
+      gsap.ticker.remove(updateMotion)
       window.removeEventListener("mousemove", handleMouseMove)
       window.removeEventListener("scroll", handleScroll)
-      removeAnimationLoop()
+    }
+
+    const observer = new IntersectionObserver(([entry]) => (entry.isIntersecting ? start() : stop()), {
+      threshold: 0,
+    })
+    observer.observe(container)
+
+    return () => {
+      stop()
+      observer.disconnect()
     }
   }, [])
 
@@ -100,7 +121,14 @@ export function GridMotion({
                   <div key={itemIndex} className={styles.rowItem}>
                     <div className={styles.rowItemInner}>
                       {typeof content === "string" && content.startsWith("/") ? (
-                        <div className={styles.rowItemImg} style={{ backgroundImage: `url(${content})` }} />
+                        <Image
+                          src={content}
+                          alt=""
+                          fill
+                          sizes="220px"
+                          priority={rowIndex === 0 && itemIndex === 0}
+                          className={styles.rowItemImg}
+                        />
                       ) : (
                         <div className={styles.rowItemContent}>{content}</div>
                       )}

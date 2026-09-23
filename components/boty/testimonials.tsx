@@ -45,6 +45,7 @@ const CARD_SPACING = [-2, 3, -1, 2]
 export function Testimonials() {
   const scrollX = useRef(0)
   const cardsRef = useRef<(HTMLDivElement | null)[]>([])
+  const scrollerRef = useRef<HTMLDivElement>(null)
   const [dimensions, setDimensions] = useState({ w: 1920, cx: 960 })
 
   // Tripled so the strip wraps seamlessly regardless of viewport width.
@@ -59,8 +60,10 @@ export function Testimonials() {
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+    const scroller = scrollerRef.current
+    if (!scroller) return
 
-    let animationFrameId: number
+    let animationFrameId: number | null = null
     let lastTime = performance.now()
     const speed = 55 // px/sec
     const totalWidth = CARD_WIDTH * duplicated.length
@@ -97,8 +100,29 @@ export function Testimonials() {
       animationFrameId = requestAnimationFrame(animate)
     }
 
-    animationFrameId = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(animationFrameId)
+    // The strip runs the whole time the page is open otherwise, burning a
+    // continuous rAF loop even while the user is reading a section far below
+    // it — pause it outside the viewport and resume when it scrolls back in.
+    const start = () => {
+      if (animationFrameId !== null) return
+      lastTime = performance.now()
+      animationFrameId = requestAnimationFrame(animate)
+    }
+    const stop = () => {
+      if (animationFrameId === null) return
+      cancelAnimationFrame(animationFrameId)
+      animationFrameId = null
+    }
+
+    const observer = new IntersectionObserver(([entry]) => (entry.isIntersecting ? start() : stop()), {
+      threshold: 0,
+    })
+    observer.observe(scroller)
+
+    return () => {
+      stop()
+      observer.disconnect()
+    }
   }, [dimensions.cx, duplicated.length])
 
   return (
@@ -125,7 +149,7 @@ export function Testimonials() {
           </a>
         </div>
 
-        <div className="relative left-1/2 w-screen -translate-x-1/2 h-[400px] sm:h-[460px] overflow-hidden">
+        <div ref={scrollerRef} className="relative left-1/2 w-screen -translate-x-1/2 h-[400px] sm:h-[460px] overflow-hidden">
           <svg className="pointer-events-none absolute top-0 left-0 z-10 h-[420px] w-full" preserveAspectRatio="none">
             <path
               d={`M 0 10 Q ${dimensions.cx} 200 ${dimensions.w} 10`}
