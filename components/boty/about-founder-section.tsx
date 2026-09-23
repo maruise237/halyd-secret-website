@@ -6,11 +6,15 @@ export function AboutFounderSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative aspect-[4/5] rounded-3xl overflow-hidden boty-shadow bg-black">
+            {/* preload="none": this file isn't web-optimized (no "faststart" flag,
+                so its metadata sits at the end), which makes preload="metadata"
+                pull most of the ~5MB file just to read the duration. None means
+                nothing downloads until the visitor actually presses play. */}
             <video
               src="/images/fondatrice/fondatrice-presentation-video.mp4"
               controls
               playsInline
-              preload="metadata"
+              preload="none"
               className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
