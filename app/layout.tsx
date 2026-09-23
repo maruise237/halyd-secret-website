@@ -2,6 +2,7 @@ import React from "react"
 import type { Metadata, Viewport } from 'next'
 import { DM_Sans, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site-config'
 import './globals.css'
 
 const dmSans = DM_Sans({
@@ -16,11 +17,54 @@ const playfairDisplay = Playfair_Display({
   weight: ['400', '500', '600', '700']
 });
 
+const TITLE = "Halyd's Secret — Salon de beauté & Académie à Bonamoussadi, Douala"
+
 export const metadata: Metadata = {
-  title: "Halyd's Secret — Salon de beauté & Académie",
-  description: "Salon de beauté et académie à Bonamoussadi (Douala) : coiffure, makeup, manucure/pédicure, vente et location de perruques, produits lace. Prenez RDV sur WhatsApp.",
-  generator: 'v0.app',
-  keywords: ['coiffure', 'salon de beauté', 'makeup', 'manucure', 'pédicure', 'perruques', 'lace', 'académie', 'Douala', 'Cameroun'],
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: TITLE,
+    template: `%s — ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  keywords: [
+    'salon de coiffure Douala',
+    'salon de beauté Bonamoussadi',
+    'coiffure femme Douala',
+    'makeup Douala',
+    'manucure pédicure Douala',
+    'pose de perruque lace Douala',
+    'vente perruques Cameroun',
+    'académie de coiffure Douala',
+    'formation coiffure Cameroun',
+    'Halyd\'s Secret',
+  ],
+  authors: [{ name: SITE_NAME }],
+  category: 'Beauty salon',
+  alternates: {
+    canonical: SITE_URL,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'fr_FR',
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: SITE_DESCRIPTION,
+  },
 }
 
 export const viewport: Viewport = {

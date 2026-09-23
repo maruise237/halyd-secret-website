@@ -48,7 +48,9 @@ export function TrustBadges() {
               <span className="flex items-center justify-center size-9 rounded-full bg-foreground text-background mb-4 sm:mb-5 shrink-0">
                 <badge.icon className="size-4" strokeWidth={1.5} />
               </span>
-              <h3 className="text-foreground font-medium mb-1.5 text-sm sm:text-base">{badge.title}</h3>
+              {/* p, not h3: this strip has no heading of its own before the "Services"
+                  h2 that follows it, so a heading here would skip a level. */}
+              <p className="text-foreground font-medium mb-1.5 text-sm sm:text-base">{badge.title}</p>
               <p className="text-sm text-muted-foreground">{badge.description}</p>
             </Reveal>
           ))}

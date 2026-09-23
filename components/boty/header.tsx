@@ -13,6 +13,7 @@ const NAV_LINKS = [
   { label: "Réalisations", id: "realisations" },
   { label: "À propos", id: "apropos" },
   { label: "Avis", id: "avis" },
+  { label: "FAQ", id: "faq" },
   { label: "Contact", id: "contact" },
 ]
 
