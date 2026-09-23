@@ -9,9 +9,12 @@ export function AboutFounderSection() {
             {/* preload="none": this file isn't web-optimized (no "faststart" flag,
                 so its metadata sits at the end), which makes preload="metadata"
                 pull most of the ~5MB file just to read the duration. None means
-                nothing downloads until the visitor actually presses play. */}
+                nothing downloads until the visitor actually presses play; the
+                poster (a real frame extracted from the video) shows in the
+                meantime instead of a blank black box. */}
             <video
               src="/images/fondatrice/fondatrice-presentation-video.mp4"
+              poster="/images/fondatrice/fondatrice-poster.jpg"
               controls
               playsInline
               preload="none"
